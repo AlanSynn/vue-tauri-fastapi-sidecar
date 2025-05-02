@@ -1,4 +1,3 @@
-
 <div align="center">
   <img src="extras/alan-standing.png" alt="Alan Standing Logo" width="150">
   <h1>vue-tauri-fastapi-sidecar</h1>
@@ -60,7 +59,9 @@ Tauri "sidecars" allow developers to package dependencies to make installation e
 
 ## How It Works
 
-<img src="extras/diagram.svg" alt="python sidecar architecture" title="python sidecar architecture" height="450"/>
+<div align="center">
+  <img src="extras/diagram.svg" alt="python sidecar architecture" title="python sidecar architecture" height="600"/>
+</div>
 
 > [!NOTE]
 > This section provides a general overview adapted from similar projects. Some details might differ slightly. Please refer to `package.json` for the exact build commands and `src-tauri/src/main.rs` for the precise sidecar management logic.
