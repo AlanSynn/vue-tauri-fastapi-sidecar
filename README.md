@@ -60,7 +60,7 @@ Tauri "sidecars" allow developers to package dependencies to make installation e
 
 ## How It Works
 
-![python sidecar architecture](extras/diagram.svg "python sidecar architecture")
+<img src="extras/diagram.svg" alt="python sidecar architecture" title="python sidecar architecture" height="450"/>
 
 > [!NOTE]
 > This section provides a general overview adapted from similar projects. Some details might differ slightly. Please refer to `package.json` for the exact build commands and `src-tauri/src/main.rs` for the precise sidecar management logic.
