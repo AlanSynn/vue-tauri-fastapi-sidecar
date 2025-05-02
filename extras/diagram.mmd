@@ -1,0 +1,66 @@
+---
+config:
+  theme: redux
+  themeVariables:
+    primaryColor: '#f8f9fa'
+    primaryTextColor: '#343a40'
+    primaryBorderColor: '#adb5bd'
+    lineColor: '#495057'
+    secondaryColor: '#e9ecef'
+    tertiaryColor: '#dee2e6'
+  flowchart:
+    diagramPadding: 10
+    useMaxWidth: true
+    htmlLabels: true
+    curve: basis
+  look: neo
+  layout: elk
+---
+flowchart TD
+ subgraph Resources["Sidecar Capabilities"]
+    direction TB
+        DB["Access Databases"]
+        FS["Access Filesystem"]
+        Network["Network Calls"]
+        OtherServer["Communicate with Other Servers"]
+        SubProc["Run Sub-processes"]
+        HWFeatures["Access Hardware (via Tauri if needed)"]
+  end
+ subgraph TauriApp["Desktop App (Tauri v2)"]
+    direction TB
+        TauriRust["<b>Tauri Core (Rust)</b><br>Manages Sidecar Process,<br>Handles OS Integration"]
+        Frontend["<b>Frontend (Vite)</b><br><i>Vue / React / Svelte / etc.</i><br>User Interface"]
+        Sidecar["<b>Sidecar (Python/FastAPI)</b><br>Backend Logic, Server"]
+        Resources
+  end
+    Frontend -- Tauri Commands (IPC) --> TauriRust
+    TauriRust -- Spawns & Manages Process --> Sidecar
+    Frontend -- HTTP API Calls --> Sidecar
+    Sidecar --> Resources
+     DB:::resourceItem
+     DB:::resourceItem
+     FS:::resourceItem
+     FS:::resourceItem
+     Network:::resourceItem
+     Network:::resourceItem
+     OtherServer:::resourceItem
+     OtherServer:::resourceItem
+     SubProc:::resourceItem
+     SubProc:::resourceItem
+     HWFeatures:::resourceItem
+     HWFeatures:::resourceItem
+     TauriRust:::tauri
+     TauriRust:::tauri
+     Frontend:::frontend
+     Frontend:::frontend
+     Sidecar:::sidecar
+     Sidecar:::sidecar
+    classDef default fill:#f8f9fa,stroke:#495057,stroke-width:1px,color:#343a40
+    classDef tauriApp fill:#e9ecef,stroke:#adb5bd,stroke-width:2px,stroke-dasharray: 5 5
+    classDef external fill:#f8f9fa,stroke:#ced4da,stroke-width:1px,stroke-dasharray: 3 3
+    classDef frontend fill:#cfe9fc,stroke:#0b5ed7,stroke-width:2px
+    classDef tauri fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+    classDef sidecar fill:#f1d5f5,stroke:#a45cb3,stroke-width:2px
+    classDef resourceItem fill:#fff4e6,stroke:#fd7e14,stroke-width:1px
+    classDef externalItem fill:#cfe9fc,stroke:#0b5ed7,stroke-width:1px
+    style Resources fill:#ffe5d0,stroke:#fd7e14,stroke-width:1px,stroke-dasharray: 3 3

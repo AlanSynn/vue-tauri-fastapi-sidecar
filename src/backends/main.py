@@ -6,8 +6,9 @@ import threading
 from typing import TypedDict
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
-from inference import infer_text_api
 from uvicorn import Config, Server
+
+from .inference import infer_text_api
 
 PORT_API = 8008
 

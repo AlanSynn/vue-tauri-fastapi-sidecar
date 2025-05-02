@@ -1,42 +1,36 @@
 {
-  "name": "example-tauri-v2-python-sidecar",
-  "version": "0.1.3",
+  "name": "vue-tauri-fastapi-sidecar",
+  "version": "0.1.0",
   "private": false,
   "packageManager": "pnpm@9.15.4",
+  "type": "module",
   "scripts": {
-    "install-reqs": "pnpm install && pip3 install -r requirements.txt",
-    "dev": "next dev",
+    "install-reqs": "pnpm install && uv pip install .",
+    "dev:frontend": "vite",
+    "dev:all": "concurrently \"uv run python src/backends/main.py\" \"pnpm dev:frontend\"",
     "build:sidecar-winos": "pyinstaller -c -F --clean --name main-x86_64-pc-windows-msvc --distpath src-tauri/bin/api src/backends/main.py",
-    "build:sidecar-macos": "pyinstaller -c -F --clean --name main-aarch64-apple-darwin --distpath src-tauri/bin/api src/backends/main.py",
+    "build:sidecar-macos-x86_64": "pyinstaller -c -F --clean --name main-x86_64-apple-darwin --distpath src-tauri/bin/api src/backends/main.py",
+    "build:sidecar-macos-aarch64": "pyinstaller -c -F --clean --name main-aarch64-apple-darwin --distpath src-tauri/bin/api src/backends/main.py",
+    "build:sidecar-macos-all": "pnpm build:sidecar-macos-x86_64 && pnpm build:sidecar-macos-aarch64",
     "build:sidecar-linux": "pyinstaller -c -F --clean --name main-x86_64-unknown-linux-gnu --distpath src-tauri/bin/api src/backends/main.py",
     "build:icons": "pnpm tauri icon public/app-icon.png",
-    "build": "next build",
-    "tauri": "tauri",
-    "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2.0.0",
-    "@tauri-apps/plugin-http": "^2.0.1",
-    "@tauri-apps/plugin-shell": "^2.0.1",
+    "@tauri-apps/api": "^2.5.0",
+    "@tauri-apps/plugin-http": "^2.4.3",
+    "@tauri-apps/plugin-shell": "^2.2.1",
     "@types/node": "20.2.4",
-    "@types/react": "18.2.7",
-    "@types/react-dom": "18.2.4",
-    "autoprefixer": "10.4.14",
-    "concurrently": "^8.0.1",
-    "cors": "^2.8.5",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.4",
-    "next": "13.4.4",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "concurrently": "^8.2.2",
+    "typescript": "5.0.4",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.1.0",
-    "@types/cors": "^2.8.13"
+    "@tauri-apps/cli": "^2.5.0",
+    "@types/cors": "^2.8.17",
+    "@vitejs/plugin-vue": "^5.2.2",
+    "vite": "^6.3.1"
   }
 }

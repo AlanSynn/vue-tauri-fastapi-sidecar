@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vue-tauri-fastapi-sidecar"
+version = "0.1.0"
+description = "Python sidecar for the Tauri application"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "fastapi==0.95.2",
+    "uvicorn[standard]",
+    "sse-starlette==1.6.5",
+    "pyinstaller==5.13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Add development specific dependencies here if needed
+]
+
+# Configuration for tools like black, ruff, pytest can also go here

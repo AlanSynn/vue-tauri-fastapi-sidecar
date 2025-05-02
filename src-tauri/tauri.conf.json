@@ -2,8 +2,8 @@
   "$schema": "gen/schemas/desktop-schema.json",
   "build": {
     "beforeBuildCommand": "pnpm build",
-    "beforeDevCommand": "pnpm dev",
-    "frontendDist": "../out",
+    "beforeDevCommand": "pnpm dev:frontend",
+    "frontendDist": "../dist",
     "devUrl": "http://localhost:3000"
   },
   "bundle": {
