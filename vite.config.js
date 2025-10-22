@@ -5,8 +5,9 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
   plugins: [vue()],
   // prevent vite from obscuring rust errors
-  base: "/app/",
   clearScreen: false,
+  root: './app',
+  publicDir: '../public',
   // Tauri expects a fixed port, fail if that port is not available
   server: {
     port: 3000,
@@ -17,6 +18,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "./dist",
+    outDir: "../dist",
+    emptyOutDir: true,
   },
 });
